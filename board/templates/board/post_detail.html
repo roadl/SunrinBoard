@@ -1,0 +1,44 @@
+{% extends 'board/base.html' %}
+{% load static %}
+
+{% block block1 %}
+
+        <br>[{{post.get_category_display}}]<h3 style="margin-top: 0px">{{ post.title }}</h3>
+        <p>{{ post.text|linebreaksbr }}</p>
+        {% if post.published_date %}
+            <div class="date">
+                {{ post.published_date }}
+            </div><br>
+        {% endif %}
+
+        {% if user.username == post.author|linebreaksbr %}
+            <div class="detail_buttons">
+                <input type="button" value="글수정" onClick="location.href='{% url 'post_edit' pk=post.pk %}'" class="button">
+                <input type="button" value="글삭제" onClick="location.href='{% url 'post_remove' pk=post.pk %}'" class="button">
+            </div>
+        {% endif %}
+        <hr>
+        
+        {% for comment in post.comments.all %}
+        
+        <div class="comment">
+        <h3 style="margin:0px;"><strong>{{ comment.author }}</strong></h3>
+        <p>{{ comment.text|linebreaks }}</p>
+        <small class="comment-date">{{ comment.created_date }}</small>
+        {% if user.username == comment.author %}
+            <a class="button" href="{% url 'comment_remove' pk=comment.pk %}">삭제</a>
+        {% endif %}
+        <hr>
+        </div>
+        {% endfor %}
+        <p>댓글작성</p>
+        {% if user.is_authenticated %}
+        <form method="POST" class="comment-form">{% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" class="button">저장</button>
+        </form>
+        {% else %}
+        로그인 후 댓글작성이 가능합니다
+        {% endif %}
+
+{% endblock %}

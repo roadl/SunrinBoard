@@ -1,0 +1,10 @@
+{% extends 'board/base.html' %}
+
+{% block block1 %}
+    <h2 style="margin-top: 0px">새 댓글</h2>
+    <form method="POST" class="post-form">{% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">저장</button>
+        <input type="button" onclick="javascript:history.back()" value="뒤로">
+    </form>
+{% endblock %}

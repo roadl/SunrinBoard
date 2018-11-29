@@ -1,0 +1,25 @@
+{% extends 'board/base.html' %}
+{% load static %}
+
+{% block block1 %}
+        {% if post.published_date %}
+            <div class="date">
+                {{ post.published_date }}
+            </div>
+        {% endif %}
+        <br>
+        <a href="{% url 'post_edit' pk=post.pk %}">글수정</a>
+        <h1>{{ post.title }}</h1>
+        <p>{{ post.text|linebreaksbr }}</p>
+        <a href="{% url 'post_remove' pk=post.pk %}">글삭제</a>
+
+<hr>
+<a href="{% url 'add_comment_to_post' pk=post.pk %}">Add comment</a>
+{% for comment in post.comments.all %}
+        <p>{{ comment.created_date }}</p>
+        <strong>{{ comment.author }}</strong>
+        <p>{{ comment.text|linebreaks }}</p>
+{% empty %}
+    <p>아직 댓글이 없습니다!</p>
+{% endfor %}
+{% endblock %}

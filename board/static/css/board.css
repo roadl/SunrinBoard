@@ -1,0 +1,129 @@
+body{
+    text-align: center;
+    
+}
+
+footer{
+    
+}
+
+.board{
+    
+}
+
+.list{
+    border-top:1px solid indigo;
+    border-bottom: 1px solid indigo;
+    display: inline-block;
+    padding-bottom:10px;
+    width:1005;
+}   
+
+.list_element{
+    border-bottom: 1px solid lightgray;
+}
+
+.list_title{
+    display:inline-block;
+    width: 60%;
+}
+.list_author{
+    display:inline-block;
+    width: 5%;
+}
+.list_date{
+    display:inline-block;
+    width: 30%;
+}
+
+.post_new{
+    float:right;
+    margin-right: 3%;
+    background-color:cornflowerblue;
+    color:white;
+}
+
+.button{
+    border:1px solid;
+    border-radius: 5px;
+    padding: 4px;
+    background-color:cornflowerblue;
+    color:white;
+}
+
+.button:hover{
+    border:1px solid gray;
+    cursor: pointer;
+}
+
+a{
+    text-decoration: none;
+    color:black;
+}
+
+.adduser_title{
+    text-align: center;
+    
+}
+
+.adduser_elements{
+    text-align: left;
+    float:left;
+    width: 100%;
+}
+
+.detail_buttons{
+    text-align: right;
+}
+
+.post-form{
+    float:left;
+    text-align: left;
+    width: 100%;
+}
+.post-form p textarea{
+    width: 100%;
+    
+}
+
+.adduser-form p{
+    width: 100%;
+}
+
+.adduser-form p label{
+    width:30%;
+}
+
+.adduser-form p input{
+    width:20%;
+}
+
+.comment-form{
+    float:left;
+    width: 100%;
+}
+
+.comment-form p{
+    text-align: left;
+}
+
+.comment-form p input{
+    width:8em;
+}
+
+.comment-form p textarea{
+    height: 1.5em;
+    width: 60em;
+}
+
+.comment{
+    text-align: left;
+}
+
+.comment small{
+    text-align: right;
+}
+
+.sort-post{
+    margin-bottom: 10px;
+}

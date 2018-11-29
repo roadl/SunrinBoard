@@ -1,0 +1,27 @@
+{% extends "board/base.html" %}
+
+{% block block1 %}
+    {% if form.errors %}
+        <p>이름과 비밀번호가 일치하지 않습니다. 다시 시도해주세요.</p>
+    {% endif %}
+    <br>
+    <form method="post" action="{% url 'login' %}">
+    {% csrf_token %}
+        
+        <table>
+        <tr>
+            <td>{{ form.username.label_tag }}</td>
+            <td>{{ form.username }}</td>
+        </tr>
+        <tr>
+            <td>{{ form.password.label_tag }}</td>
+            <td>{{ form.password }}</td>
+        </tr>
+        </table>
+
+        <br><input type="submit" value="로그인" class="button"/>
+        <input type="button" onclick="javascript:history.back()" value="뒤로" class="button">
+        <input type="hidden" name="next" value="{{ next }}" />
+        
+    </form>
+{% endblock %}

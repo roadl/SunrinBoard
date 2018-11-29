@@ -1,0 +1,33 @@
+{% load static %}
+<html>
+    <link rel="stylesheet" href="{% static 'css/board.css'%}">
+    <head>
+        <title>선린정보실</title>
+        <div style="padding:20px;">
+            <a href="/"><img src="{% static 'logo.png' %}" alt="선린인터넷고등학교" style="width:220px;height:42px;"></a>
+            <h1>선린인터넷고등학교 정보실</h1>
+        </div>
+    </head>
+    <body bgcolor=white>
+    {% block sort %}
+    {% endblock %}
+    <div class="board">
+        <div class="list">
+        {% block block1 %}	
+
+
+        {% endblock %}
+        <br>
+        
+        </div>
+    </div>
+    </body>
+    <footer>
+    {% if user.is_authenticated %}
+            <p>안녕하세요 {{ user.username }}님 <small><a href="{% url 'logout' %}" class="button">Log out</a></small></p>
+        {% else %}
+            <br><a href="{% url 'login' %}" class="button">로그인</a>
+            <a href="{% url 'join' %}" class="button"> 회원가입</a>
+        {% endif %}
+    </footer>
+</html>

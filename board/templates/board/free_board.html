@@ -1,0 +1,53 @@
+{% extends 'board/base.html' %}
+{% load static %}
+
+<link rel="stylesheet" href="{% static 'css/board.css'%}">
+
+{% block sort %}
+    <select class="sort-post" onchange="location = this.value;" >
+        <option disabled selected value>선택</option>
+        <option value="?sort=all">전체</option>
+        <option value="?sort=question">질문</option>
+        <option value="?sort=free">자유</option>
+        <option value="?sort=tip">팁</option>
+        {% if user.is_authenticated %}
+            <option class="sort-mypost" value="?sort=mypost">내가쓴글</option>
+        {% endif %}
+    </select>
+<br>
+<br>
+{% endblock %}
+
+{% block block1 %}
+
+<div class="list_element">
+    <div class="list_title">
+        제목
+    </div>
+    <div class="list_author">
+        글쓴이
+    </div>
+    <div class="list_date">
+        날짜
+        
+    </div>
+    
+</div>   
+{% for i in post %}
+<div class="list_element">
+    <div class="list_title">
+        [{{i.get_category_display}}]<a href="{% url 'post_detail' pk=i.pk %}">{{i.title}}</a> [{{ i.comments.count }}]
+    </div>
+    <div class="list_author">
+        {{i.author}}
+    </div>
+    <div class="list_date">
+        {{i.published_date}}
+    </div>
+</div>    
+
+{% endfor %}
+<br>
+
+<input type="button" value="글쓰기" onClick="location.href='{% url 'post_new' %}'" class="button">
+{% endblock %}
